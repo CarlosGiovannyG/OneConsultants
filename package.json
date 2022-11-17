@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm run start:dev --workspaces=server",
-    "app":"npm run start --workspaces=app"
+    "app": "npm run start --workspaces=app"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,12 @@
   "workspaces": [
     "app",
     "server"
-  ]
+  ],
+  "dependencies": {
+    "react-icons": "^4.6.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2"
+  }
 }
