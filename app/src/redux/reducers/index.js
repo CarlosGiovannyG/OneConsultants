@@ -7,6 +7,7 @@ import {
   OPEN_MODAL_SCHOOL,
 } from "../variables/modal";
 import {
+  CLEAR_STATE,
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
@@ -66,6 +67,8 @@ function reducer(state = initialState, action) {
       return reducersUsers.getAllUsersSuccess(state, action);
     case GET_ALL_USERS_FAIL:
       return reducersUsers.getAllUsersFail(state, action);
+    case CLEAR_STATE:
+      return reducersUsers.clearState(state, action);
     default:
       return state;
   }

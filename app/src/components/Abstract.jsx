@@ -40,6 +40,7 @@ const Abstract = () => {
 
     setTimeout(() => {
       dispatch(actions.closeAbstract());
+      dispatch(actions.clearState());
     }, 2000);
   };
 

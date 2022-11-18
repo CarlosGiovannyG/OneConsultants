@@ -19,10 +19,10 @@ function App() {
   const close = () => {
     dispatch(actions.closeModal());
   };
-  const closeSchool = () => {
-    dispatch(actions.closeModal());
+  const schoolClose = () => {
+    dispatch(actions.closeModalSchool());
   };
-  const closeAbstract = () => {
+  const abstractClose = () => {
     dispatch(actions.closeAbstract());
   };
   return (
@@ -34,10 +34,10 @@ function App() {
       <Modal showModal={showModal} close={close}>
         <FormUsers />
       </Modal>
-      <Modal showModal={showModalSchool} close={closeSchool}>
+      <Modal showModal={showModalSchool} close={schoolClose}>
         <FormSchool />
       </Modal>
-      <Modal showModal={showAbstract} close={closeAbstract}>
+      <Modal showModal={showAbstract} close={abstractClose}>
         <Abstract />
       </Modal>
     </>

@@ -1,4 +1,5 @@
 import {
+  CLEAR_STATE,
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
@@ -87,6 +88,15 @@ export const reducersUsers = {
         loading: false,
         allUsers: [],
         allUsersError: action.payload,
+      };
+    }
+  },
+  clearState: (state, action) => {
+    if (action.type === CLEAR_STATE) {
+      return {
+        ...state,
+        dataUser: {},
+        dataUserSchool: {},
       };
     }
   },

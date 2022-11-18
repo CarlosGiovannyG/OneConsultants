@@ -13,6 +13,7 @@ const actions = {
   continueForm: actionsUsers.continueForm,
   registerUser: actionsUsers.registerUser,
   getAllUsers: actionsUsers.getAllUser,
+  clearState: actionsUsers.clearState,
 };
 
 export default actions;

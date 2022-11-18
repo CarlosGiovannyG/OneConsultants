@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  CLEAR_STATE,
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
@@ -71,6 +72,12 @@ export const actionsUsers = {
         .catch((error) => {
           dispatch({ type: GET_ALL_USERS_FAIL, payload: error });
         });
+    };
+  },
+  clearState: () => {
+    return (dispatch) => {
+      dispatch(dispatch({ type: CLEAR_STATE, payload: {} }));
+     
     };
   },
 };
