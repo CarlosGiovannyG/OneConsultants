@@ -11,6 +11,7 @@ const actions = {
   filledForm: actionsUsers.filledForm,
   filledFormSchool: actionsUsers.filledFormSchool,
   continueForm: actionsUsers.continueForm,
+  registerUser: actionsUsers.registerUser,
 };
 
 export default actions;

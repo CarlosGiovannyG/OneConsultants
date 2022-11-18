@@ -1,15 +1,14 @@
 import React from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../hooks/useForm";
 import actions from "../redux/actions";
 import styles from "../styles/formUsers.module.css";
 
 const initialForm = {
-  name: "",
-  city: "",
-  email: "",
-  phone: "",
+  nameSchool: "",
+  citySchool: "",
+  emailSchool: "",
+  phoneSchool: "",
   teacher: "",
   type: "school",
 };
@@ -18,27 +17,26 @@ const validationsForm = (form) => {
   let errors = {};
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
 
-  if (!form.name.trim()) {
-    errors.name = "El 'Nombre' del colegio es requerido";
+  if (!form.nameSchool.trim()) {
+    errors.nameSchool = "El 'Nombre' del colegio es requerido";
   }
 
-  if (!form.city.trim()) {
-    errors.city = "La 'Ciudad' es requerida";
+  if (!form.citySchool.trim()) {
+    errors.citySchool = "La 'Ciudad' es requerida";
   }
 
-  if (!form.email.trim()) {
-    errors.email = "El campo 'Email' es requerido";
-  } else if (!regexEmail.test(form.email.trim())) {
+  if (!form.emailSchool.trim()) {
+    errors.emailSchool = "El campo 'Email' es requerido";
+  } else if (!regexEmail.test(form.emailSchool.trim())) {
     errors.email = "El campo 'Email' es incorrecto";
   }
 
-  if (!form.phone) errors.phone = "Se requiere número telefónico";
-  else if (/(?=[^0-9])/.test(form.phone))
-    errors.phone = "Teléfono debe ser solo números";
+  if (!form.phoneSchool) errors.phoneSchool = "Se requiere número telefónico";
+  else if (/(?=[^0-9])/.test(form.phoneSchool))
+    errors.phoneSchool = "Teléfono debe ser solo números";
 
-  if (!form.teacher) errors.phone = "Se requiere número de identificación";
-  else if (/(?=[^0-9])/.test(form.phone))
-    errors.teacher = "El nombre del profesor es requerido";
+  if (!form.teacher) errors.teacher = "El nombre del profesor es requerido";
+  
 
   return errors;
 };
@@ -51,9 +49,6 @@ const FormSchool = () => {
     validationsForm
   );
 
-  useEffect(() => {
-    dispatch(actions.continueForm(false));
-  }, []);
 
   const open = () => {
     dispatch(actions.closeModalSchool());
@@ -66,49 +61,49 @@ const FormSchool = () => {
       <form onSubmit={handleSubmit} className={styles.formUsers}>
         <input
           className={
-            errors.name ? `${styles.inputError}` : `${styles.inputForm}`
+            errors.nameSchool ? `${styles.inputError}` : `${styles.inputForm}`
           }
           placeholder={
-            errors.name ? `${errors.name}` : "Escribe el nombre del colegio"
+            errors.nameSchool ? `${errors.nameSchool}` : "Escribe el nombre del colegio"
           }
-          name="name"
-          value={form.name}
+          name="nameSchool"
+          value={form.nameSchool}
           type="text"
           onBlur={handleBlur}
           onChange={handleChange}
         />
         <input
-          name="city"
-          value={form.city}
+          name="citySchool"
+          value={form.citySchool}
           className={
-            errors.city ? `${styles.inputError}` : `${styles.inputForm}`
+            errors.citySchool ? `${styles.inputError}` : `${styles.inputForm}`
           }
-          placeholder={errors.city ? `${errors.city}` : "Escribe la Ciudad"}
+          placeholder={errors.citySchool ? `${errors.citySchool}` : "Escribe la Ciudad"}
           type="text"
           onBlur={handleBlur}
           onChange={handleChange}
         />
         <input
-          name="email"
-          value={form.email}
+          name="emailSchool"
+          value={form.emailSchool}
           className={
-            errors.email ? `${styles.inputError}` : `${styles.inputForm}`
+            errors.emailSchool ? `${styles.inputError}` : `${styles.inputForm}`
           }
           placeholder={
-            errors.email ? `${errors.email}` : "Escribe el email del colegio"
+            errors.emailSchool ? `${errors.emailSchool}` : "Escribe el email del colegio"
           }
           type="text"
           onBlur={handleBlur}
           onChange={handleChange}
         />
         <input
-          name="phone"
-          value={form.phone}
+          name="phoneSchool"
+          value={form.phoneSchool}
           className={
-            errors.phone ? `${styles.inputError}` : `${styles.inputForm}`
+            errors.phoneSchool ? `${styles.inputError}` : `${styles.inputForm}`
           }
           placeholder={
-            errors.phone ? `${errors.phone}` : "Número telefónico del colegio"
+            errors.phoneSchool ? `${errors.phoneSchool}` : "Número telefónico del colegio"
           }
           type="number"
           onBlur={handleBlur}
@@ -130,11 +125,11 @@ const FormSchool = () => {
           onChange={handleChange}
         />
 
-        {!form.name ||
-          errors.name ||
-          errors.city ||
-          errors.email ||
-          errors.phone ||
+        {!form.nameSchool ||
+          errors.nameSchool ||
+          errors.citySchool ||
+          errors.emailSchool ||
+          errors.phoneSchool ||
           errors.teacher || (
             <input
               className={styles.submitForm}

@@ -1,33 +1,67 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "../redux/actions";
 import styles from "../styles/abstract.module.css";
 import Loader from "./Loader";
 const Abstract = () => {
+  const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.dataUser);
   const dataUserSchool = useSelector((state) => state.dataUserSchool);
+  const loading = useSelector((state) => state.loading);
+  const responseRegister = useSelector((state) => state.responseRegister);
 
+  const confirmHandler = () => {
+    const userData = { ...dataUser, ...dataUserSchool };
+    dispatch(actions.registerUser(userData));
 
-  
+    if (responseRegister) {
+      dispatch(actions.closeModal());
+    }
+  };
+
   return (
     <div className={styles.containerAbstract}>
+      {loading && <Loader />}
       <div className={styles.dataPerson}>
         <h3>Datos Personales</h3>
-        <span>Nombre {dataUser.name}</span>
-        <span>Apellido {dataUser.lastname}</span>
-        <span>E-Mail {dataUser.email}</span>
-        <span>Teléfono {dataUser.phone}</span>
-        <span>C. C. {dataUser.document}</span>
+        <span>
+          Nombre:<p>{dataUser.name}</p>
+        </span>
+        <span>
+          Apellido:<p>{dataUser.lastname}</p>
+        </span>
+        <span>
+          E-Mail: <p>{dataUser.email}</p>
+        </span>
+        <span>
+          Teléfono: <p>{dataUser.phone}</p>
+        </span>
+        <span>
+          C. C.: <p>{dataUser.document}</p>
+        </span>
       </div>
       <div className={styles.dataPerson}>
         <h3>Datos Académicos</h3>
-        <span>Colegio {dataUserSchool.name}</span>
-        <span>Ciudad {dataUserSchool.city}</span>
-        <span>E-Mail {dataUserSchool.email}</span>
-        <span>Teléfono {dataUserSchool.phone}</span>
-        <span>Profesor(a) {dataUserSchool.teacher}</span>
+        <span>
+          Colegio: <p>{dataUserSchool.nameSchool}</p>
+        </span>
+        <span>
+          Ciudad: <p>{dataUserSchool.citySchool}</p>
+        </span>
+        <span>
+          E-Mail: <p>{dataUserSchool.emailSchool}</p>
+        </span>
+        <span>
+          Teléfono: <p>{dataUserSchool.phoneSchool}</p>
+        </span>
+        <span>
+          Profesor(a): <p>{dataUserSchool.teacher}</p>
+        </span>
       </div>
       <div className={styles.containerButton}>
-        <button>Confirmar Registro</button>
+        {!loading && (
+          <button onClick={confirmHandler}>Confirmar Registro</button>
+        )}
       </div>
     </div>
   );

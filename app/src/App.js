@@ -29,7 +29,7 @@ function App() {
       <Modal showModal={showModalSchool} close={closeSchool}>
         <FormSchool />
       </Modal>
-      <Modal showModal={true} close={closeAbstract}>
+      <Modal showModal={showAbstract} close={closeAbstract}>
         <Abstract />
       </Modal>
     </>

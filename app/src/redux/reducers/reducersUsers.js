@@ -1,4 +1,11 @@
-import { CONTINUE_FORM, FILLED_FORM_SCHOOL, FILLED_FORM_USER } from "../variables/users";
+import {
+  CONTINUE_FORM,
+  FILLED_FORM_SCHOOL,
+  FILLED_FORM_USER,
+  REGISTER_USER,
+  REGISTER_USER_FAIL,
+  REGISTER_USER_SUCCESS,
+} from "../variables/users";
 
 export const reducersUsers = {
   filledForm: (state, action) => {
@@ -22,6 +29,32 @@ export const reducersUsers = {
       return {
         ...state,
         continueForm: action.payload,
+      };
+    }
+  },
+  registerUser: (state, action) => {
+    if (action.type === REGISTER_USER) {
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    }
+  },
+  registerUserSuccess: (state, action) => {
+    if (action.type === REGISTER_USER_SUCCESS) {
+      return {
+        ...state,
+        loading: false,
+        responseRegister: action.payload,
+      };
+    }
+  },
+  registerUserFail: (state, action) => {
+    if (action.type === REGISTER_USER_FAIL) {
+      return {
+        ...state,
+        loading: false,
+        responseError: action.payload,
       };
     }
   },

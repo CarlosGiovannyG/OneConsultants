@@ -28,13 +28,19 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      if (initialForm.type === 'user') {
+      if (initialForm.type === "user") {
         dispatch(actions.filledForm(form));
-        dispatch(actions.continueForm(true));        
+        dispatch(actions.continueForm(true));
+        setTimeout(() => {
+          dispatch(actions.continueForm(false));
+        }, 5000);
       }
-      if (initialForm.type === 'school') {
+      if (initialForm.type === "school") {
         dispatch(actions.filledFormSchool(form));
-        dispatch(actions.continueForm(true));        
+        dispatch(actions.continueForm(true));
+        setTimeout(() => {
+          dispatch(actions.continueForm(false));
+        }, 5000);
       }
     } else {
       return;

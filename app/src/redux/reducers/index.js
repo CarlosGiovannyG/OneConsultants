@@ -10,6 +10,9 @@ import {
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
+  REGISTER_USER,
+  REGISTER_USER_FAIL,
+  REGISTER_USER_SUCCESS,
 } from "../variables/users";
 import { reducersModal } from "./reducersModal";
 import { reducersUsers } from "./reducersUsers";
@@ -21,6 +24,9 @@ const initialState = {
   showModal: false,
   showModalSchool: false,
   showAbstract: false,
+  loading: false,
+  responseRegister: null,
+  responseError: null,
 };
 
 function reducer(state = initialState, action) {
@@ -43,6 +49,12 @@ function reducer(state = initialState, action) {
       return reducersUsers.filledFormSchool(state, action);
     case CONTINUE_FORM:
       return reducersUsers.continueForm(state, action);
+    case REGISTER_USER:
+      return reducersUsers.registerUser(state, action);
+    case REGISTER_USER_SUCCESS:
+      return reducersUsers.registerUserSuccess(state, action);
+    case REGISTER_USER_FAIL:
+      return reducersUsers.registerUserFail(state, action);
     default:
       return state;
   }
