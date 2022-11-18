@@ -16,7 +16,7 @@ En la otra terminal correr el comando **npm run app** el cual pondrá en marcha 
 
 > Al dar clic en dicho botón se abre una ventana modal solicitando los datos personales del usuario a registrar.
 
-![Imagen del Home](https://raw.githubusercontent.com/CarlosGiovannyG/OneConsultants/master/docs/images/2.png)
+![Imagen del Home](./docs/images/2.png)
 
 > Se deben ingresar la totalidad de los datos. Al llenar estos, aparece un botón dando la posibilidad de continuar.
 
