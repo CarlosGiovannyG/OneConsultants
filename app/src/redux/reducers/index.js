@@ -10,6 +10,9 @@ import {
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
+  GET_ALL_USERS,
+  GET_ALL_USERS_FAIL,
+  GET_ALL_USERS_SUCCESS,
   REGISTER_USER,
   REGISTER_USER_FAIL,
   REGISTER_USER_SUCCESS,
@@ -27,6 +30,8 @@ const initialState = {
   loading: false,
   responseRegister: null,
   responseError: null,
+  allUser: [],
+  allUsersError: null,
 };
 
 function reducer(state = initialState, action) {
@@ -55,6 +60,12 @@ function reducer(state = initialState, action) {
       return reducersUsers.registerUserSuccess(state, action);
     case REGISTER_USER_FAIL:
       return reducersUsers.registerUserFail(state, action);
+    case GET_ALL_USERS:
+      return reducersUsers.getAllUsers(state, action);
+    case GET_ALL_USERS_SUCCESS:
+      return reducersUsers.getAllUsersSuccess(state, action);
+    case GET_ALL_USERS_FAIL:
+      return reducersUsers.getAllUsersFail(state, action);
     default:
       return state;
   }

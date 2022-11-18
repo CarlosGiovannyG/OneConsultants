@@ -8,15 +8,39 @@ const Abstract = () => {
   const dataUser = useSelector((state) => state.dataUser);
   const dataUserSchool = useSelector((state) => state.dataUserSchool);
   const loading = useSelector((state) => state.loading);
-  const responseRegister = useSelector((state) => state.responseRegister);
 
   const confirmHandler = () => {
-    const userData = { ...dataUser, ...dataUserSchool };
+    const {
+      name,
+      lastname,
+      email,
+      phone,
+      document,
+      nameSchool,
+      citySchool,
+      emailSchool,
+      phoneSchool,
+      teacher,
+    } = { ...dataUser, ...dataUserSchool };
+
+    const userData = {
+      name,
+      lastname,
+      email,
+      phone,
+      document,
+      nameSchool,
+      citySchool,
+      emailSchool,
+      phoneSchool,
+      teacher,
+    };
+
     dispatch(actions.registerUser(userData));
 
-    if (responseRegister) {
-      dispatch(actions.closeModal());
-    }
+    setTimeout(() => {
+      dispatch(actions.closeAbstract());
+    }, 2000);
   };
 
   return (

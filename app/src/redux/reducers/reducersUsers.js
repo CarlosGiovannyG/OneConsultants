@@ -2,6 +2,9 @@ import {
   CONTINUE_FORM,
   FILLED_FORM_SCHOOL,
   FILLED_FORM_USER,
+  GET_ALL_USERS,
+  GET_ALL_USERS_FAIL,
+  GET_ALL_USERS_SUCCESS,
   REGISTER_USER,
   REGISTER_USER_FAIL,
   REGISTER_USER_SUCCESS,
@@ -46,6 +49,7 @@ export const reducersUsers = {
         ...state,
         loading: false,
         responseRegister: action.payload,
+        responseError: null,
       };
     }
   },
@@ -55,6 +59,34 @@ export const reducersUsers = {
         ...state,
         loading: false,
         responseError: action.payload,
+      };
+    }
+  },
+  getAllUsers: (state, action) => {
+    if (action.type === GET_ALL_USERS) {
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    }
+  },
+  getAllUsersSuccess: (state, action) => {
+    if (action.type === GET_ALL_USERS_SUCCESS) {
+      return {
+        ...state,
+        loading: false,
+        allUsers: action.payload,
+        allUsersError: null,
+      };
+    }
+  },
+  getAllUsersFail: (state, action) => {
+    if (action.type === GET_ALL_USERS_FAIL) {
+      return {
+        ...state,
+        loading: false,
+        allUsers: [],
+        allUsersError: action.payload,
       };
     }
   },

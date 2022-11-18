@@ -16,7 +16,10 @@
     "server"
   ],
   "dependencies": {
+    "@nestjs/mapped-types": "*",
+    "@nestjs/mongoose": "^9.2.1",
     "axios": "^1.1.3",
+    "mongoose": "^6.7.2",
     "react-icons": "^4.6.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
